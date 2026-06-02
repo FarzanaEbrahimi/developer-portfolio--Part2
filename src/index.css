@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@layer base {
+    :root{
+        --primary: #06a2c2;
+    }
+}
+@layer utilities {
+    .bg-primary{
+       background-color:var(--primary); 
+
+    } 
+    .text-primary{
+        color:var(--primary);
+    }
+    .from-primary{
+        --tw-gradient-from: var(--primary);
+    }
+    .to-primary{
+        --tw-gradient-to: var(--primary);
+    }
+    .via-primary{
+        --tw-gradient-via: var(--primary);
+    }
+}
