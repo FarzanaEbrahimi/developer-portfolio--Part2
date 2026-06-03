@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import schoolportal from '../assets/School Portal.png';
-import invoiceapp from '../assets/Client Manager.png';
-import booklog from '../assets/Book Reading Log.png';
-import movietheater from '../assets/Movie Theater.png';
-import personalweb from '../assets/Personal WebPage.png';
+import schoolportal from "../assets/school-portal.png";
+import invoiceapp from "../assets/client-manager.png";
+import booklog from "../assets/book-reading-log.png";
+import movietheater from "../assets/movie-theater.png";
+import personalweb from "../assets/personal-webpage.png";
 import portfolio from '../assets/DeveloperPortfolio.png';
 
 const Projects = () => {
