@@ -2,30 +2,33 @@
 
 A modern and responsive portfolio website built with React and Vite.
 
-## Features
+## 🚀 Features
 
 - Responsive Design
 - Interactive UI Components
-- Contact Form
+- Contact Form with Validation
+- Live Message Preview
+- LocalStorage Draft Saving
 - Scroll Progress Indicator
 - Modern React Architecture
 
-## Technologies
+## 🛠 Technologies
 
 - React
 - Vite
 - JavaScript
 - Tailwind CSS
 
-## Installation
+## 📦 Installation
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Build
+## 📌 Note
 
-```bash
-npm run build
-```
+This project is deployed using Vercel.
+
+Live site:
+https://developer-portfolio-part2-h5l9.vercel.app/
