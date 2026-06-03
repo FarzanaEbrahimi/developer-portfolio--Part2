@@ -4,7 +4,7 @@ import invoiceapp from "../assets/client-manager.PNG";
 import booklog from "../assets/book-reading-log.PNG";
 import movietheater from "../assets/movie-theater.PNG";
 import personalweb from "../assets/personal-webpage.PNG";
-import portfolio from '../assets/DeveloperPortfolio.png';
+import portfolio from '../assets/DeveloperPortfolio.PNG';
 
 const Projects = () => {
     const projects =[
