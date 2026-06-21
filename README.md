@@ -8,9 +8,7 @@ This project demonstrates practical frontend development skills including routin
 
 ## 🚀 Live Demo
 
-👉 https://developer-portfolio-part2-sigma.vercel.app/
-
----
+## https://developer-portfolio-part2.vercel.app/
 
 ## 🌐 Deployment
 
