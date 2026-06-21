@@ -8,7 +8,9 @@ const ThemeToggle = ({ theme, setTheme }) => {
       {themes.map((item) => (
         <button
           key={item}
+          type="button"
           onClick={() => setTheme(item)}
+          aria-label={`Switch to ${item} theme`}
           className={`px-3 py-1 rounded-lg text-sm font-medium transition-all
           ${
             theme === item

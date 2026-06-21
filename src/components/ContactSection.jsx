@@ -19,6 +19,9 @@ const ContactSection = () => {
         const [savedDraft, setSavedDraft] = useState(false)
         const [emailHint, setEmailHint] = useState('')
         useEffect(() => {
+            document.title = "Farzana Ebrahimi | Contact";
+        }, []);
+        useEffect(() => {
             const saved = localStorage.getItem('portfolio-contact')
 
             if (saved) {
@@ -135,7 +138,7 @@ const ContactSection = () => {
                 id: 3,
                 icon: FaLinkedin,
                 title: 'LinkedIn',
-                value: 'linkedin.com/in/farzana',
+                value: 'linkedin.com/in/farzana-e-134367215',
                 link: 'https://www.linkedin.com/in/farzana-e-134367215/'
             },
              {
@@ -148,21 +151,54 @@ const ContactSection = () => {
         ];
     return (
      
-    <section className='py-20 bg-gray-900' id='contact'>
+    <section
+        id="contact"
+        aria-labelledby="contact-heading"
+        className="py-20 bg-gray-900"
+        >
         <div className='container mx-auto px-4 max-w-7xl'>
             <div className='text-center mb-12'>
-                <h2 className='text-3xl md:text-5xl font-extrabold text-white
-                mb-2'>
-                    Let's Connect
+                <h2
+                    id="contact-heading"
+                    className='text-3xl md:text-5xl font-extrabold text-white mb-2'
+                >
+                    Contact Me
                 </h2>
                 <div className='w-28 h-1 bg-primary mx-auto mt-2
                 rounded-2xl'></div>
             </div>
             <div className='grid md:grid-cols-2 gap-8'>
                 <div>
-                    <p className='text-gray-400 mb-8 leading-relaxed'>
-                    Thank you for visiting my portfolio. I am a Computer Science graduate with experience in web development, teaching, customer service, and technology projects. I am always eager to learn new skills, collaborate on innovative ideas, and contribute to meaningful digital solutions.
-                    </p>        
+                    <p className='text-gray-700 mb-8 leading-relaxed'>
+                    Thank you for visiting my portfolio. I am a Computer Science graduate with experience in web development, teaching, customer service, and technology projects.
+
+                    <br /><br />
+
+                    I am open to internships, collaborations, freelance opportunities, and frontend development projects where I can contribute, learn, and grow as a developer. My goal is to contribute to meaningful projects while continuing to grow as a frontend developer.
+                    </p>    
+                    <div className="mt-6">
+                        <h3 className="text-white font-semibold mb-2">
+                            Available For
+                        </h3>
+
+                        <div className="flex flex-wrap gap-2">
+                            <span className="bg-cyan-900 text-cyan-300 px-3 py-1 rounded-full text-sm">
+                            Internships
+                            </span>
+
+                            <span className="bg-cyan-900 text-cyan-300 px-3 py-1 rounded-full text-sm">
+                            Freelance Projects
+                            </span>
+
+                            <span className="bg-cyan-900 text-cyan-300 px-3 py-1 rounded-full text-sm">
+                            Frontend Development
+                            </span>
+
+                            <span className="bg-cyan-900 text-cyan-300 px-3 py-1 rounded-full text-sm">
+                            Collaborations
+                            </span>
+                        </div>
+                    </div>    
                     <div className='space-y-6'>
                         {contactInfo.map((info) => {
                             const Icon = info.icon;
@@ -181,14 +217,15 @@ const ContactSection = () => {
                                         {info.link ? (
                                             <a
                                                 href={info.link}
-                                                className='text-gray-400 text-sm hover:text-primary transition-colors'
+                                                aria-label={`${info.title}: ${info.value}`}
+                                                className=' text-sm text-gray-300 hover:text-cyan-400 transition-colors'
                                                 target='_blank'
                                                 rel='noopener noreferrer'
                                                 >
                                                 {info.value}
                                             </a>
                                         ) :  (
-                                        <p className='text-gray-400 text-sm'>
+                                        <p className='text-gray-700 text-sm'>
                                                 {info.value}
                                             </p>
                                         )}
@@ -205,9 +242,11 @@ const ContactSection = () => {
                             You have unsent message data saved!
                         </div>
                     )}
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit}
+                        aria-label="Contact Form">
                         <div className='mb-4'>
                             <label
+                                htmlFor="name"
                                 className='text-white block mb-2 text-sm font-medium'
                             >
                                 Name
@@ -216,15 +255,19 @@ const ContactSection = () => {
                             <input
                                 type='text'
                                 name='name'
+                                id='name'
                                 required
                                 value={formData.name}
                                 onChange={handleChange}
                                 minLength={3}
-                                className='w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white'
+                                className='w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-cyan-400'
                             />
 
                             {errors.name && (
-                                <p className='text-red-400 text-sm mt-1'>
+                                <p
+                                role="alert"
+                                className='text-red-400 text-sm mt-1'
+                                >
                                 {errors.name}
                                 </p>
                             )}
@@ -243,21 +286,25 @@ const ContactSection = () => {
                                 className='w-full px-4 py-2 bg-gray-700
                                 border border-gray-600 rounded-lg
                                 text-white text-sm focus:outline-none 
-                                focus:border-primary transition-colors '
+                                focus:ring-2 focus:ring-cyan-400 transition-colors '
                                 placeholder='your@email.com'
                                 required 
                             />
                             {errors.email && (
-                                <p className='text-red-400 text-sm mt-1'>
+                                <p role="alert"
+                                className='text-red-400 text-sm mt-1'>
                                     {errors.email}
                                 </p>
                                 )}
 
                                 {emailHint && (
-                                <p className='text-cyan-400 text-xs mt-1'>
-                                    {emailHint}
-                                </p>
-                            )}
+                                    <p
+                                        aria-live="polite"
+                                        className='text-cyan-400 text-xs mt-1'
+                                    >
+                                        {emailHint}
+                                    </p>
+                                )}
 
                         </div>
                         <div className='mb-6'>
@@ -275,21 +322,35 @@ const ContactSection = () => {
                                 className='w-full px-4 py-2 bg-gray-700
                                 border border-gray-600 rounded-lg
                                 text-white text-sm focus:outline-none 
-                                focus:border-primary transition-colors '
+                                focus:ring-2 focus:ring-cyan-400 transition-colors '
                                 placeholder='Your Message ....'
                                 rows="4"
                                 required 
                             />
                             {errors.message && (
-                                <p className='text-red-400 text-sm mt-1'>
+                                <p role="alert"
+                                className='text-red-400 text-sm mt-1'>
                                     {errors.message}
                                 </p>
                             )}
                         </div>
-                        <button type='submit'
-                        className='w-full px-6 py-2.5 bg-primary
-                        text-white rounded-lg font-medium
-                        hover:bg-primary/80 '>
+                        <button
+                            type='submit'
+                            aria-label="Send Contact Message"
+                            className='
+                            w-full
+                            px-6
+                            py-2.5
+                            bg-cyan-600 hover:bg-cyan-700
+                            text-white
+                            rounded-lg
+                            font-medium
+                            hover:bg-primary/80
+                            focus:outline-none
+                            focus:ring-2
+                            focus:ring-cyan-400
+                            '
+                        >
                             Send Message
                         </button>
                     </form>
@@ -297,8 +358,15 @@ const ContactSection = () => {
                         <h3 className='text-white font-semibold mb-4'>
                             📨 Live Message Preview
                         </h3>
+                        <div className="mb-6 text-sm text-cyan-300">
+                            Response time: Usually within 24–48 hours.
+                        </div>
 
-                       <div className='bg-[#1f2937] rounded-lg p-4 border border-primary/20'>
+                       <div
+                            aria-label="Message Preview"
+                            aria-live="polite"
+                            className='bg-[#1f2937] rounded-lg p-4 border border-primary/20'
+                         >
                             <p className='text-white'>
                             <strong>Name:</strong> {formData.name || '...'}
                             </p>
@@ -311,7 +379,7 @@ const ContactSection = () => {
                             <strong>Message:</strong>
                             </p>
 
-                            <p className='text-gray-300 mt-1 wrap-break-word'>
+                            <p className='text-gray-300 mt-1 break-all'>
                             {formData.message || 'Your message preview will appear here'}
                             </p>
                         </div>
@@ -320,7 +388,10 @@ const ContactSection = () => {
                 </div>
             </div>
             {toast && (
-                <div className='fixed bottom-6 right-6 bg-green-600 text-white px-6 py-4 rounded-xl shadow-xl flex items-center gap-2 animate-pulse z-50'>
+                <div
+                 role="alert"
+                 aria-live="assertive"
+                 className='fixed bottom-6 right-6 bg-green-600 text-white px-6 py-4 rounded-xl shadow-xl flex items-center gap-2 z-50'>
                     <FaCheckCircle />
                     Message sent successfully!
                 </div>

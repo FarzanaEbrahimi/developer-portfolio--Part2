@@ -1,5 +1,5 @@
 import React from 'react'
-import educationImg from '../assets/education.png'
+import educationImg from '../assets/education.jpg'
 
 import {
   GraduationCap,
@@ -41,8 +41,9 @@ const Education = () => {
   return (
 
     <section
-      className='text-white py-20 overflow-hidden'
       id='education'
+      aria-labelledby='education-heading'
+      className='text-white py-20 overflow-hidden'
     >
 
       <div className='max-w-7xl mx-auto px-6 lg:px-16'>
@@ -54,10 +55,13 @@ const Education = () => {
             Education & Training
           </p>
 
-          <h2 className='text-4xl md:text-5xl font-extrabold'>
+          <h2
+            id='education-heading'
+            className='text-4xl md:text-5xl font-extrabold'
+          >
             Education
           </h2>
-          <p className='text-gray-400 mt-3 max-w-xl'>
+          <p className='text-gray-100 mt-3 max-w-xl'>
             My academic journey and professional training have built a strong foundation in software engineering, web development, and modern technologies.
           </p>
 
@@ -89,7 +93,7 @@ const Education = () => {
 
               <img
                 src={educationImg}
-                alt="Education"
+                alt="Education and learning journey"
                 className='w-80 h-80 md:w-96 md:h-96
                 object-cover object-center
                 transition-all duration-500
@@ -158,7 +162,7 @@ const Education = () => {
                         {edu.degree}
                       </h3>
 
-                      <p className='text-gray-400 text-sm'>
+                      <p className='text-gray-700 text-sm'>
                         {edu.institution}
                       </p>
 

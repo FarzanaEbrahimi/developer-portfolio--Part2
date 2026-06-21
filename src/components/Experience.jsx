@@ -59,13 +59,18 @@ const Experience = () => {
 
     ];
   return (
-    <section className='text-white py-20 relative overflow-hidden'
-    id='skills'>
+    <section
+      id='skills'
+      aria-labelledby='skills-heading'
+      className='text-white py-20 relative overflow-hidden'
+    >
         <div className='max-w-7xl mx-auto px-6 lg:px-16 relative z-10 '>
             <div className='grid md:grid-cols-2 gap-16 items-start'>
                 <div data-aos='fade-right'>
-                    <h2 className='text-4xl md:text-5xl font-extrabold
-                    mb-12'>
+                    <h2
+                      id='skills-heading'
+                      className='text-4xl md:text-5xl font-extrabold mb-12'
+                    >
                         Technical <span className='text-primary'>
                             Skills</span>
                     </h2>
@@ -112,11 +117,14 @@ const Experience = () => {
       >
 
         <div
-            className='h-full rounded-full bg-linear-to-r
-            from-primary to-cyan-400
-            shadow-[0_0_15px_#06a2c2]
-            transition-all duration-1000'
-            style={{ width: skill.width }}
+          role="progressbar"
+          aria-label={skill.name}
+          aria-valuenow={parseInt(skill.width)}
+          aria-valuemin="0"
+          aria-valuemax="100"
+          className='h-full rounded-full bg-linear-to-r
+          from-primary to-cyan-400'
+          style={{ width: skill.width }}
         >
         </div>
       </div>
@@ -167,7 +175,7 @@ const Experience = () => {
                     </h3>
                     <div className='flex flex-col sm:flex-row
                     sm:items-center gap-2 sm:gap-4 mt-2 text-sm
-                    text-gray-400'>
+                    text-gray-700'>
                         <span className='flex items-center gap-1.5'>
                             <Building size={14} className='text-primary'/>
                             {exp.company}

@@ -20,7 +20,6 @@ import ProjectDetails from "./pages/ProjectDetails";
 import Favorites from "./pages/Favorites";
 
 import { useTheme } from "./context/ThemeContext";
-import { FavoritesProvider } from "./context/FavoritesContext";
 import { ToastProvider } from "./context/ToastContext";
 
 /* 
@@ -118,24 +117,23 @@ const App = () => {
   const { theme } = useTheme();
 
   useEffect(() => {
+    
     AOS.init({
-      duration: 1000,
-      once: false,
-      offset: 100,
+      duration: 800,
+      once: true,
+      offset: 50,
     });
   }, []);
 
   return (
     <BrowserRouter>
       <ToastProvider>
-        <FavoritesProvider>
-
           <div
             className={`min-h-screen transition-all duration-500 ${
               theme === "dark"
-                ? "bg-[#111827] text-white"
+                ? "bg-[#111827] text-gray-100"
                 : theme === "light"
-                ? "bg-white text-black"
+                ? "bg-white text-gray-900"
                 : "bg-cyan-950 text-white"
             }`}
           >
@@ -143,13 +141,14 @@ const App = () => {
 
             <ScrollProgress />
 
-            <AnimatedRoutes />
+            <main className="relative z-0">
+              <AnimatedRoutes />
+            </main>
+            
 
             <Footer />
             <BackToTop />
           </div>
-
-        </FavoritesProvider>
       </ToastProvider>
     </BrowserRouter>
   );

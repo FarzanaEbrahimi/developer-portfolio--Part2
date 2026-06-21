@@ -18,27 +18,38 @@ const ProjectUpdates = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const randomUpdate =
-        updatesList[
-          Math.floor(Math.random() * updatesList.length)
-        ]
 
-      setUpdate(randomUpdate)
+      let randomUpdate;
 
-      setHistory((prev) => [
+      do {
+        randomUpdate =
+          updatesList[
+            Math.floor(Math.random() * updatesList.length)
+          ];
+      } while (randomUpdate === update);
+
+      setUpdate(randomUpdate);
+
+      setHistory(prev => [
         randomUpdate,
-        ...prev.slice(0, 4)
-      ])
-    }, 15000)
+        ...prev.filter(item => item !== randomUpdate)
+      ].slice(0, 5));
 
-    return () => clearInterval(interval)
-  }, [])
+    }, 15000);
+
+    return () => clearInterval(interval);
+
+  }, [update]);
 
   return (
-    <section className='py-16 bg-gray-900'>
+    <section className='py-16 bg-gray-900'
+     aria-labelledby='updates-heading'
+    >
       <div className='max-w-5xl mx-auto px-4'>
 
-        <h2 className='text-center text-4xl font-bold text-white mb-8'>
+        <h2 
+        id='updates-heading'
+        className='text-center text-4xl font-bold text-white mb-8'>
           Live Project Updates
         </h2>
 
@@ -50,14 +61,14 @@ const ProjectUpdates = () => {
             {update}
           </p>
 
-          <p className='text-gray-400 mt-3 text-sm'>
+          <p className='text-gray-100 mt-3 text-sm'>
             Updates refresh every 15 seconds
           </p>
         </div>
         <div className='mt-6 space-y-2'>
           {history.map((item, index) => (
             <div
-              key={index}
+              key={`${item}-${index}`}
               className='bg-gray-800 p-3 rounded-lg text-gray-300 animate-pulse'
             >
               {item}

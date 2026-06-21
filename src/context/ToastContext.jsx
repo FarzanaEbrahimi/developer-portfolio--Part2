@@ -53,10 +53,12 @@ export const ToastProvider = ({ children }) => {
             {/* UNDO BUTTON */}
             {toast.action && (
               <button
+                type="button"
                 onClick={() => {
                   toast.action();      //undo logic
                   removeToast(toast.id);
                 }}
+                aria-label="Undo previous action"
                 className="ml-3 underline text-white font-bold"
               >
                 UNDO

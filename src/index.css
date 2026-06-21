@@ -1,5 +1,7 @@
 @import "tailwindcss";
-
+body {
+  overflow-x: hidden;
+}
 @layer base {
     :root{
         --primary: #06a2c2;
@@ -37,3 +39,4 @@
 .animate-fade-in {
   animation: fade-in 0.3s ease-out;
 }
+

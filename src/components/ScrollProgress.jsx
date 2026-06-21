@@ -26,7 +26,12 @@ const ScrollProgress = () => {
 
   return (
     <div
-      className="fixed top-0 left-0 h-1.5 bg-primary z-9999 transition-all duration-200 shadow-[0_0_15px_#06a2c2]"
+      role="progressbar"
+      aria-label="Page scroll progress"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow={Math.round(scroll)}
+      className="fixed top-0 left-0 h-1.5 bg-primary z-50 transition-all duration-200 shadow-[0_0_15px_#06a2c2]"
       style={{ width: `${scroll}%` }}
     />
   );

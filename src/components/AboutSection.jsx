@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import aboutBg from '../assets/about-bg.png';
+import aboutBg from '../assets/about-bg.jpg';
 const AboutSection = () => {
   const [emoji, setEmoji] = useState('😊')
   const [showFact, setShowFact] = useState(false)
@@ -12,14 +12,18 @@ const AboutSection = () => {
  '🔥'
 ]
   return (
-    <section className='text-white mt-16 relative overflow-hidden' id='about' >
+    <section
+        id='about'
+        aria-labelledby='about-heading'
+        className='text-white mt-16 relative overflow-hidden'
+    >
         <div className='max-w-7xl mx-auto px-4 md:grid md:grid-cols-2
         gap-10 lg:gap-16 items-center py-16 relative z-10 '>
             <div data-aos='fade-right'>
-                <h2 className='text-4xl md:text-5xl font-extrabold text-white mb-6'>
+                <h2 id='about-heading' className='text-4xl md:text-5xl font-extrabold text-white mb-6'>
                      More <span className='text-primary'>About</span> Me
                 </h2>
-                <p className='text-gray-400 text-base lg:text-lg
+                <p className='text-gray-100 text-base lg:text-lg
                     mb-10 leading-relaxed'>
                     I am Farzana Ebrahimi, a Computer Science graduate with a passion for web development and technology. I have experience teaching English and computer skills, as well as working in customer service and sales. Through continuous learning and hands-on projects, I have developed strong skills in HTML, CSS, JavaScript, React, and responsive web design.
 
@@ -27,13 +31,30 @@ const AboutSection = () => {
 
                     I enjoy creating clean, interactive, and user-friendly websites that solve real-world problems. My goal is to become a highly skilled software developer and contribute to innovative technology projects while continuing to learn and grow professionally.
                 </p>
+                <p>
+                    <strong>Career Goals:</strong> I am currently seeking internships, junior frontend development roles, and opportunities to collaborate on meaningful projects while continuing to strengthen my React and modern web development skills.
+                </p>
+                <p>
+                <strong>Strengths:</strong> Problem-solving, continuous learning, teamwork, communication, responsive design, and creating accessible user interfaces.
+                </p>
+                <div className="mt-6 space-y-4 text-gray-300">
+
+                    <p>
+                        <strong>Learning Journey:</strong> My journey started with HTML and CSS and gradually expanded to JavaScript, React, and modern frontend development. Every project has helped me improve my problem-solving and design skills.
+                    </p>
+
+                    <p>
+                        <strong>Work Philosophy:</strong> I believe in continuous learning, writing clean code, creating accessible user experiences, and building applications that provide real value to users.
+                    </p>
+
+                </div>
                 <div className='grid grid-cols-3 gap-6 max-w-xl'>
                     <div className='text-center rounded-2xl
                     bg-[#111a3e] border border-[#1f1641] p-5
                     transition-all duration-300 hover:border-primary/50'>
                         <h3 className='text-primary font-bold
-                        text-2xl md:text-3xl'>10+</h3>
-                        <p className='text-xs text-gray-400
+                        text-2xl md:text-3xl'>6+</h3>
+                        <p className='text-xs text-gray-700
                         uppercase tracking-wider mt-0.5'>Projects</p>
 
                     </div>
@@ -42,7 +63,7 @@ const AboutSection = () => {
                     transition-all duration-300 hover:border-primary/50'>
                          <h3 className='text-primary font-bold
                         text-2xl md:text-3xl'>3</h3>
-                        <p className='text-xs text-gray-400
+                        <p className='text-xs text-gray-700
                         uppercase tracking-wider mt-0.5'>Languages</p>
 
                     </div>
@@ -51,7 +72,7 @@ const AboutSection = () => {
                     transition-all duration-300 hover:border-primary/50'>
                          <h3 className='text-primary font-bold
                         text-2xl md:text-3xl'>5+</h3>
-                        <p className='text-xs text-gray-400
+                        <p className='text-xs text-gray-700
                         uppercase tracking-wider mt-0.5'>Certificates</p>
                     </div>
                 </div>
@@ -68,6 +89,10 @@ const AboutSection = () => {
                     >
                 </div>
                 <div
+                    role="button"
+                    tabIndex={0}
+                    aria-label="Interactive profile image"
+
                     className='relative z-10
                     w-80 h-80 md:w-96 md:h-96
                     bg-[#111a3e]
@@ -75,6 +100,7 @@ const AboutSection = () => {
                     overflow-hidden
                     border border-[#1f1641]
                     shadow-2xl'
+
                     onMouseEnter={() => {
                     setEmoji('👋')
                     setShowFact(true)
@@ -84,19 +110,32 @@ const AboutSection = () => {
                     setEmoji('😊')
                     setShowFact(false)
                     }}
+
                     onClick={() =>
-                        setEmoji(
+                    setEmoji(
                         reactions[
                         Math.floor(
                             Math.random() * reactions.length
                         )
                         ]
+                    )
+                    }
+
+                    onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                        setEmoji(
+                        reactions[
+                            Math.floor(
+                            Math.random() * reactions.length
+                            )
+                        ]
                         )
                     }
+                    }}
                 >
                     <img
                         src={aboutBg}
-                        alt="About"
+                        alt="Web development workspace "
                         className='w-full h-full object-cover
                         transition-transform duration-500
                         hover:scale-110'

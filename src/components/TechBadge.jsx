@@ -1,7 +1,7 @@
-const TechBadge = ({ tech }) => {
+const TechBadge = ({ label }) => {
   return (
     <span className="bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">
-      {tech}
+      {label}
     </span>
   );
 };

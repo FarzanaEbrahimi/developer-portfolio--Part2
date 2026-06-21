@@ -35,12 +35,12 @@ const Certificates = () => {
         }
     ]
   return (
-    <section className='text-white py-20' id='certificates'>
+    <section className='text-white py-20' id='certificates' aria-labelledby='certificates-heading'>
         <div className='max-w-7xl mx-auto px-6 lg:px-16'>
             <div className='mb-16'>
                 <p className='text-primary text-sm uppercase
                 tracking-widest mb-2 font-semibold'>Achievements</p>
-                <h2 className='text-4xl md:text-5xl font-extrabold
+                <h2 id='certificates-heading' className='text-4xl md:text-5xl font-extrabold
                 text-white'>
                     Certifications.
                 </h2>
@@ -76,7 +76,7 @@ const Certificates = () => {
 
                         <div
                         className='flex items-center gap-4
-                        mb-4 text-xs text-gray-400'
+                        mb-4 text-xs text-gray-700'
                         >
 
                         <span className='flex items-center gap-1'>
@@ -100,17 +100,21 @@ const Certificates = () => {
 
                         </div>
 
-                        <h3
-                        className='text-xl font-bold mb-3
-                        group-hover:text-primary transition-colors'
-                        >
+                        <div className="flex items-center mb-3">
+                            <h3
+                                className='text-xl font-bold
+                                group-hover:text-primary transition-colors'
+                            >
+                                {cap.title}
+                            </h3>
 
-                        {cap.title}
-
-                        </h3>
+                            <span className='ml-2 text-green-400 text-sm'>
+                                ✓ Verified
+                            </span>
+                        </div>
 
                         <p
-                        className='text-gray-400 text-sm mb-6
+                        className='text-gray-700 text-sm mb-6
                         line-clamp-2'
                         >
 
@@ -120,13 +124,18 @@ const Certificates = () => {
 
                         <a
                         href={cap.link}
+                        aria-label={`View ${cap.title} certificate`}
                         target='_blank'
                         rel='noopener noreferrer'
                         className='inline-flex items-center gap-2
                         text-sm font-medium text-primary
                         hover:text-white transition-colors
                         border-b border-transparent
-                        hover:border-white pb-1'
+                        hover:border-white pb-1
+                        focus:outline-none
+                        focus:ring-2
+                        focus:ring-cyan-400
+                        rounded'
                         >
 
                         View Certificate

@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import HeroSection from '../components/HeroSection'
 import Education from '../components/Education'
 import Experience from '../components/Experience'
@@ -10,9 +11,13 @@ import { motion } from "framer-motion";
 
 
 const Home = () => {
-  return (
+ 
+    useEffect(() => {
+      document.title = "Farzana Ebrahimi | Frontend Developer";
+    }, []);
 
-    <motion.div
+    return (
+    <motion.main
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
@@ -26,7 +31,7 @@ const Home = () => {
       <ProjectUpdates />
       <FeedbackWall />
       <ContactSection />
-    </motion.div>
+    </motion.main>
   )
 }
 

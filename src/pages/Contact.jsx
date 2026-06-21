@@ -1,5 +1,11 @@
-import ContactSection from '../components/ContactSection'
+import { useEffect } from "react";
+import ContactSection from "../components/ContactSection";
 
 export default function Contact() {
-  return <ContactSection />
+
+  useEffect(() => {
+    document.title = "Farzana Ebrahimi | Contact";
+  }, []);
+
+  return <ContactSection />;
 }

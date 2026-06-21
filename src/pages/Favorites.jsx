@@ -1,20 +1,28 @@
-import React from "react";
+import React, { useEffect }from "react";
 import { Link } from "react-router-dom";
 import { useFavorites } from "../context/FavoritesContext";
 
 const Favorites = () => {
   const { favorites, toggleFavorite } = useFavorites();
 
+  useEffect(() => {
+    document.title = "Farzana Ebrahimi | Favorites";
+  }, []);
+
   return (
-    <section className="py-20 min-h-screen">
+    <main className="py-20 min-h-screen"
+    aria-labelledby="favorites-heading">
       <div className="container mx-auto px-4">
 
-        <h1 className="text-4xl font-bold text-center mb-3">
+        <h1 
+          id="favorites-heading"
+          className="text-4xl font-bold text-center mb-3"
+        >
           Favorite Projects ⭐
         </h1>
 
-        <p className="text-center text-gray-400 mb-10">
-          {favorites.length} favorite project(s)
+        <p className="text-center text-gray-100 mb-10">
+          {favorites.length} saved project(s) in your portfolio collection
         </p>
 
         {favorites.length === 0 ? (
@@ -28,14 +36,26 @@ const Favorites = () => {
               No Favorites Yet
             </h2>
 
-            <p className="text-gray-400 mb-8 max-w-md mx-auto">
+            <p className="text-gray-700 mb-8 max-w-md mx-auto">
               You haven't added any projects to your favorites list.
               Explore projects and save the ones you like.
             </p>
 
-            <Link
+           <Link
               to="/projects"
-              className="bg-cyan-500 hover:bg-cyan-600 transition px-6 py-3 rounded-lg text-white font-semibold"
+              className="
+              bg-cyan-500
+              hover:bg-cyan-600
+              transition
+              px-6
+              py-3
+              rounded-lg
+              text-white
+              font-semibold
+              focus:outline-none
+              focus:ring-2
+              focus:ring-cyan-400
+              "
             >
               Browse Projects
             </Link>
@@ -50,7 +70,7 @@ const Favorites = () => {
               >
                 <img
                   src={project.image}
-                  alt={project.title}
+                  alt={`${project.title} project screenshot`}
                   className="w-full h-48 object-cover"
                 />
 
@@ -59,7 +79,7 @@ const Favorites = () => {
                     {project.title}
                   </h3>
 
-                  <p className="text-gray-400 text-sm mb-4">
+                  <p className="text-gray-700 text-sm mb-4">
                     {project.desc}
                   </p>
 
@@ -77,14 +97,39 @@ const Favorites = () => {
                   <div className="flex gap-3">
                     <Link
                       to={`/projects/${project.id}`}
-                      className="flex-1 text-center bg-cyan-500 hover:bg-cyan-600 px-4 py-2 rounded transition"
+                      className="
+                      flex-1
+                      text-center
+                      bg-cyan-500
+                      hover:bg-cyan-600
+                      px-4
+                      py-2
+                      rounded
+                      transition
+                      focus:outline-none
+                      focus:ring-2
+                      focus:ring-cyan-400
+                      "     
                     >
                       Details
                     </Link>
 
                     <button
+                      type="button"
+                      aria-label={`Remove ${project.title} from favorites`}
                       onClick={() => toggleFavorite(project)}
-                      className="flex-1 bg-red-500 hover:bg-red-600 px-4 py-2 rounded transition"
+                      className="
+                      flex-1
+                      bg-red-500
+                      hover:bg-red-600
+                      px-4
+                      py-2
+                      rounded
+                      transition
+                      focus:outline-none
+                      focus:ring-2
+                      focus:ring-red-400
+                      "
                     >
                       Remove
                     </button>
@@ -97,7 +142,7 @@ const Favorites = () => {
         )}
 
       </div>
-    </section>
+    </main>
   );
 };
 

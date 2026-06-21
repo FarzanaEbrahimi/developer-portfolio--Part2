@@ -1,5 +1,11 @@
-import AboutSection from '../components/AboutSection'
+import { useEffect } from "react";
+import AboutSection from "../components/AboutSection";
 
 export default function About() {
-  return <AboutSection />
+
+  useEffect(() => {
+    document.title = "Farzana Ebrahimi | About";
+  }, []);
+
+  return <AboutSection />;
 }

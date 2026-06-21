@@ -67,6 +67,9 @@ const FeedbackWall = () => {
           <h2 className='text-4xl font-bold text-white'>
             Visitor Feedback Wall
           </h2>
+          <p className='text-gray-100 mt-3'>
+            {feedbacks.length} feedback(s) submitted
+          </p>
         </div>
 
         <form
@@ -74,7 +77,12 @@ const FeedbackWall = () => {
           className='bg-gray-900 p-6 rounded-xl mb-10'
         >
           <div className='flex justify-end mb-4'>
+            <label htmlFor="sort" className="sr-only">
+              Sort Projects
+            </label>
             <select
+              id='sort'
+              aria-label="Sort projects"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
               className='bg-gray-700 text-white p-2 rounded'
@@ -85,17 +93,25 @@ const FeedbackWall = () => {
             </select>
           </div>
           <div className='grid md:grid-cols-2 gap-4'>
+             <div className="flex flex-col">
+                <label htmlFor="name" className="text-white mb-2">
+                  Your Name
+                </label>
 
-            <input
-              type='text'
-              placeholder='Your Name'
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className='p-3 rounded bg-gray-700 text-white'
-            />
+                <input
+                  id="name"
+                  type="text"
+                  placeholder="Your Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  className="p-3 rounded bg-gray-700 text-white"
+                />
+              </div>
 
             <select
               value={rating}
+              aria-label='Rating'
               onChange={(e) => setRating(e.target.value)}
               className='p-3 rounded bg-gray-700 text-white'
             >
@@ -110,15 +126,18 @@ const FeedbackWall = () => {
 
           <textarea
             value={comment}
+            aria-label='Feedback Message'
             onChange={(e) => setComment(e.target.value)}
             placeholder='Leave your feedback...'
+            required
             rows='4'
-            className='w-full mt-4 p-3 rounded bg-gray-700 text-white'
+            className='w-full mt-4 p-3 rounded bg-gray-700 text-white '
           />
 
           <button
             type='submit'
-            className='mt-4 bg-primary px-6 py-3 rounded-lg text-white'
+            aria-label="Submit feedback form"
+            className='mt-4 bg-cyan-600 hover:bg-cyan-700 px-6 py-3 rounded-lg text-white'
           >
             Submit Feedback
           </button>
